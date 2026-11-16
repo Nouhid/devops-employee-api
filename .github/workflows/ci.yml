@@ -49,7 +49,7 @@ jobs:
       # 6. Automated testing and coverage
       - name: Run Pytest with Coverage
         run: |
-          pytest -v \
+         python -m pytest -v \
           --cov=main \
           --cov-report=term-missing \
           --cov-fail-under=80
