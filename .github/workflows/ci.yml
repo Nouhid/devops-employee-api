@@ -1,3 +1,4 @@
+
 name: FastAPI CI Pipeline
 
 on:
@@ -57,3 +58,25 @@ jobs:
           --cov=main \
           --cov-report=term-missing \
           --cov-fail-under=80
+jobs:
+
+  secret-scan:
+
+    name: Gitleaks Secret Detection
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Step 1: Checkout complete Git history
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      # Step 2: Scan repository for secrets
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: "false"
