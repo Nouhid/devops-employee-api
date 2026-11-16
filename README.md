@@ -51,3 +51,4 @@ Run application:
 Run tests:
 
     pytest -v
+# Branch protection test
