@@ -73,3 +73,43 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_ENABLE_COMMENTS: "false"
+
+
+
+  trivy-security-scan:
+
+    name: Trivy Vulnerability Scanner
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # Step 1: Checkout source code
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      # Step 2: Scan dependencies and configurations
+      - name: Run Trivy Security Scan
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln,misconfig
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          format: json
+          output: trivy-results.json
+          exit-code: "1"
+
+      # Step 3: Upload security report
+      - name: Upload Trivy Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-security-report
+          path: trivy-results.json
+          if-no-files-found: ignore
+          retention-days: 14
