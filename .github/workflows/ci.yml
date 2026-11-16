@@ -32,7 +32,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: "pip"
-          cache-dependency-path: requirements-dev.txt
+          cache-dependency-path: requirements.lock
 
       # 3. Upgrade pip
       - name: Upgrade pip
@@ -40,7 +40,11 @@ jobs:
 
       # 4. Install dependencies
       - name: Install Dependencies
-        run: pip install -r requirements-dev.txt
+        run: |
+         python -m pip install \
+          --require-hashes \
+          --only-binary=:all: \
+          -r requirements.lock
 
       # 5. Static code analysis
       - name: Ruff Code Linting
