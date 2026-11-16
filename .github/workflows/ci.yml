@@ -46,4 +46,4 @@ jobs:
       # Step 5: Run automated tests
       - name: Run Pytest
         run: |
-          pytest -v
+         python -m  pytest -v
