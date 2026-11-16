@@ -113,3 +113,52 @@ jobs:
           path: trivy-results.json
           if-no-files-found: ignore
           retention-days: 14
+
+
+  dependency-audit:
+
+    name: Python Dependency Vulnerability Audit
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # Step 1: Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      # Step 2: Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Step 3: Install pip-audit
+      - name: Install pip-audit
+        run: |
+          python -m pip install \
+            --only-binary=:all: \
+            pip-audit==2.10.1
+
+      # Step 4: Audit locked dependencies
+      - name: Run Dependency Audit
+        run: |
+          pip-audit \
+            --require-hashes \
+            --disable-pip \
+            -r requirements.lock \
+            --format json \
+            --output pip-audit-report.json
+
+      # Step 5: Upload audit report
+      - name: Upload Dependency Audit Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-audit-report
+          path: pip-audit-report.json
+          if-no-files-found: ignore
+          retention-days: 14

@@ -1,0 +1,19 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.2"
+  },
+  "ReportID": "01a1e3d7-0c75-7135-9ed7-9b6e9fb93543",
+  "CreatedAt": "2026-11-16T15:41:23.893080815+05:30",
+  "ArtifactID": "sha256:3b8e1c412432cae7cbb05903e8f031b8e6a9e35e998a8d16ff389366b7effd10",
+  "ArtifactName": ".",
+  "ArtifactType": "repository",
+  "Metadata": {
+    "RepoURL": "https://github.com/Nouhid/devops-employee-api.git",
+    "Branch": "main",
+    "Commit": "03bf02d04e73cd07059ef1f743e0a7eb259f25ab",
+    "CommitMsg": "fix: correct CI workflow job structure",
+    "Author": "Nouhid \u003cnouhid10@gmail.com\u003e",
+    "Committer": "Nouhid \u003cnouhid10@gmail.com\u003e"
+  }
+}
