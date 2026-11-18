@@ -1,0 +1,7 @@
+services:
+  employee-api:
+    image: devops-employee-api:v4
+    container_name: employee-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
