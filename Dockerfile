@@ -11,6 +11,11 @@ RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 # STAGE 2: RUNTIME
 FROM python:3.12-slim AS runtime
 
+# Update OS packages and security patches
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
