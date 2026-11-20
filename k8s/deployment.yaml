@@ -15,10 +15,15 @@ spec:
     spec:
       containers:
         - name: employee-api
-          image: nouhid28/devops-employee-api:v1
+          image: nouhid28/devops-employee-api:v2
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: employee-api-config
+            - secretRef:
+                name: employee-api-secret
           resources:
             requests:
               cpu: 100m
