@@ -1,0 +1,6 @@
+title = "DevOps Employee API Gitleaks configuration"
+
+[[allowlists]]
+description = "The Kubernetes Deployment uses a public Git commit SHA as an immutable Docker image tag; this identifier is not a credential."
+paths = ["k8s/deployment.yaml"]
+regexes = ["^[0-9a-f]{40}$"]
