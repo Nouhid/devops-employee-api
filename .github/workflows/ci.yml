@@ -49,7 +49,7 @@ jobs:
           python -m pytest -v \
             --cov=main \
             --cov-report=term-missing \
-            --cov-report=xml:coverage.xml \ 
+            --cov-report=xml:coverage.xml \
             --cov-fail-under=80
 
 
