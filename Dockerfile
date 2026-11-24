@@ -25,7 +25,8 @@ ENV PYTHONUNBUFFERED=1
 COPY --from=builder /install /usr/local
 
 # Create non-root application user
-RUN groupadd --system appgroup && useradd --system --gid appgroup --create-home appuser
+RUN groupadd --system --gid 10001 appgroup && \
+    useradd --system --uid 10001 --gid 10001 --create-home appuser
 
 # Copy application as root and make it read-only
 COPY main.py .
