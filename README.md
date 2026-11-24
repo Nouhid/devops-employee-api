@@ -52,3 +52,12 @@ Run tests:
 
     pytest -v
 # Branch protection test
+
+## Pull Request Validation
+
+This project uses GitHub Actions to automatically validate pull requests through:
+- Python dependency installation
+- Ruff code linting
+- Pytest automated testing
+- Code coverage verification
+- Gitleaks secret detection
