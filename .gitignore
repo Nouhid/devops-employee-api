@@ -36,3 +36,6 @@ trivy-image-report.json
 pip-audit-report.json
 trivy-report.json
 trivy-image-report.json
+
+# Generated coverage XML report
+coverage.xml
