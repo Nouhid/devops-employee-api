@@ -24,3 +24,15 @@ __pycache__/
 
 # Trivy security reports
 trivy-image-report.json
+
+# Coverage reports
+.coverage
+.coverage.*
+
+# Ruff cache
+.ruff_cache/
+
+# Security scan reports
+pip-audit-report.json
+trivy-report.json
+trivy-image-report.json
