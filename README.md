@@ -30,6 +30,8 @@ The platform is organized into source control, CI and security validation, image
 
 See [docs/architecture.md](docs/architecture.md) for the architecture diagram, request path, delivery sequence, security controls, and implementation boundaries.
 
+For a recruiter-friendly project summary, implementation highlights, design decisions, and interview talking points, see the [portfolio case study](docs/portfolio-case-study.md).
+
 ## CI/CD and DevSecOps pipeline
 
 The GitHub Actions workflow runs on pull requests targeting main and on pushes to main.
@@ -125,7 +127,9 @@ The runtime image uses a dedicated non-root user (UID 10001), and the applicatio
 .
 ├── .github/workflows/ci.yml       # CI and DevSecOps pipeline
 ├── argocd/                        # Argo CD Application
-├── docs/architecture.md           # Architecture and delivery flow
+├── docs/
+│   ├── architecture.md            # Architecture and delivery flow
+│   └── portfolio-case-study.md    # Recruiter-friendly project case study
 ├── k8s/                           # Kubernetes manifests
 ├── tests/                         # Automated API tests
 ├── Dockerfile                     # Multi-stage container build
@@ -148,8 +152,10 @@ The runtime image uses a dedicated non-root user (UID 10001), and the applicatio
 
 ## Project links
 
-- [Source repository](https://github.com/Nouhid/devops-employee-api)
-- [GitHub Actions](https://github.com/Nouhid/devops-employee-api/actions)
+- [Project repository](https://github.com/Nouhid/devops-employee-api)
+- [Portfolio case study](docs/portfolio-case-study.md)
+- [Architecture documentation](docs/architecture.md)
+- [GitHub Actions runs](https://github.com/Nouhid/devops-employee-api/actions)
 - [Docker Hub image](https://hub.docker.com/r/nouhid28/devops-employee-api)
 - [SonarQube Cloud project](https://sonarcloud.io/project/overview?id=Nouhid_devops-employee-api)
 
