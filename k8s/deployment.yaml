@@ -13,6 +13,12 @@ spec:
       labels:
         app: employee-api
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: employee-api
           image: nouhid28/devops-employee-api:v2
@@ -43,3 +49,9 @@ spec:
               port: 8000
             initialDelaySeconds: 15
             periodSeconds: 20
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
